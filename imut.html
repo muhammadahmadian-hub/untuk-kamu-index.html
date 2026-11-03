@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hai Kamu! 💖</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles & Animations */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Floating Hearts Animation */
+        .heart-bg {
+            position: fixed;
+            bottom: -10vh;
+            color: rgba(255, 77, 121, 0.6);
+            animation: floatUp 6s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Dodging Button Transition */
+        #btn-catch {
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Fade in and out animations */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s forwards;
+            display: flex !important;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.9); display: none; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Card Pulse Animation */
+        .pulse-soft {
+            animation: pulseSoft 2s infinite;
+        }
+
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffdde1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff758c; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center relative">
+
+    <!-- Container for background floating hearts -->
+    <div id="heart-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- ================= INTRO SCREEN ================= -->
+    <div id="intro-screen" class="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-4">
+        <div class="bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl text-center max-w-md w-full border border-white/50 pulse-soft">
+            <i class="fa-solid fa-circle-question text-6xl text-pink-500 mb-6 animate-bounce"></i>
+            <h1 class="text-3xl md:text-4xl font-pacifico text-pink-600 mb-4">Jawab Jujur Yaaa!</h1>
+            <p class="text-gray-700 font-bold mb-8 text-xl">Kamu sayang gak sama aku? 🥺</p>
+            
+            <div class="flex items-center justify-center h-24 relative w-full">
+                <!-- Wrapper for layout -->
+                <div class="w-1/2 flex justify-end pr-2">
+                    <!-- Button Yes -->
+                    <button id="btn-yes" class="bg-gradient-to-r from-green-400 to-green-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:scale-105 active:scale-95 text-lg flex items-center gap-2 z-20 relative transition-transform">
+                        <i class="fa-solid fa-heart"></i> Sayang!
+                    </button>
+                </div>
+                <div class="w-1/2 flex justify-start pl-2">
+                    <!-- Button No (Dodging) -->
+                    <button id="btn-no" class="bg-gradient-to-r from-red-400 to-red-500 text-white font-bold py-3 px-6 rounded-full shadow-lg text-lg flex items-center gap-2 z-30 relative transition-transform duration-200">
+                        <i class="fa-solid fa-heart-crack"></i> Nggak
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAIN CONTENT (SURPRISE) ================= -->
+    <div id="main-content" class="hidden relative z-10 flex-col items-center justify-start min-h-screen w-full px-4 py-12 max-w-4xl mx-auto pb-20">
+        
+        <!-- Header -->
+        <div class="text-center mb-8 mt-4 md:mt-8">
+            <h1 class="text-4xl md:text-5xl font-pacifico text-pink-600 mb-4 drop-shadow-md">Yeayyy! Aku Juga Sayang Banget! ❤️</h1>
+            <p class="text-gray-800 text-lg md:text-xl font-semibold bg-white/70 inline-block px-6 py-2 rounded-full backdrop-blur-sm shadow-sm border border-pink-200">
+                Coba dibaca ya pelan-pelan ke bawah... 👇
+            </p>
+        </div>
+
+        <!-- Long Romantic Letter Section -->
+        <div class="bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-xl w-full text-gray-800 leading-loose space-y-6 mb-12 border-2 border-pink-100 relative overflow-hidden">
+            <!-- Decorative Quotes -->
+            <i class="fa-solid fa-quote-left text-6xl text-pink-200 absolute top-4 left-4 opacity-50"></i>
+            <i class="fa-solid fa-quote-right text-6xl text-pink-200 absolute bottom-4 right-4 opacity-50"></i>
+            
+            <h2 class="text-3xl font-pacifico text-center text-pink-500 mb-8 mt-2 relative z-10">Teruntuk Kesayanganku...</h2>
+            
+            <div class="relative z-10 text-lg md:text-xl font-medium space-y-6 text-gray-700">
+                <p class="text-justify indent-8">
+                    Hai sayang... Mungkin halaman web ini kelihatannya sederhana, tapi percayalah, semua kata yang ada di sini aku buat khusus untuk mengungkapkan betapa berartinya kamu buat aku. Sejak pertama kali kita kenal dan dekat, aku nggak pernah nyangka kalau hari-hariku bakal berubah jadi jauh lebih berwarna karena kehadiranmu.
+                </p>
+                
+                <p class="text-justify indent-8">
+                    Kamu itu rasanya seperti pelangi setelah hujan lebat. Di saat aku lagi capek-capeknya sama urusan dunia, di saat pikiran lagi berisik banget, denger suaramu atau sekadar dapet notif chat dari kamu aja udah cukup buat bikin senyum aku balik lagi. Kamu selalu punya cara yang ajaib buat bikin aku merasa aman dan dicintai.
+                </p>
+
+                <p class="text-justify indent-8">
+                    Lewat pesan ini, aku mau ngucapin banyak banget terima kasih. Terima kasih ya, udah selalu sabar ngadepin sifat aku yang kadang nyebelin dan egois. Terima kasih udah selalu mau dengerin cerita-ceritaku yang nggak jelas dari A sampai Z. Dan yang paling penting, terima kasih karena kamu selalu milih untuk bertahan sama aku di saat semuanya nggak mudah. Kasih sayang, usahamu, dan perhatian-perhatian kecilmu itu luar biasa berharga buat aku.
+                </p>
+
+                <p class="text-justify indent-8">
+                    Aku tau, perjalanan kita ke depannya mungkin nggak akan selalu mulus. Pasti ada aja kerikil, salah paham, perdebatan, atau masa-masa di mana kita lagi capek satu sama lain. Tapi satu hal yang perlu kamu selalu ingat: perasaanku ke kamu jauh lebih besar dari semua masalah yang akan kita hadapi. Kamu adalah salah satu alasan terbaikku untuk semangat memulai hari, dan nama yang selalu aku doakan sebelum tidur di malam hari.
+                </p>
+
+                <p class="text-justify indent-8">
+                    Semoga kita bisa terus bareng-bareng ya. Kita ciptain lebih banyak lagi kenangan-kenangan manis, kita lewatin susah senangnya dunia ini sama-sama sambil terus berpegangan tangan. Tolong jangan pernah bosan ya sama aku, karena aku selalu pengen kamu. I love you, yesterday, today, tomorrow, and forever. 💕
+                </p>
+            </div>
+            
+            <p class="text-right font-pacifico text-2xl text-pink-600 mt-8 pr-4 relative z-10">
+                - Dari aku yang paling menyayangimu -
+            </p>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-12">
+            
+            <!-- Photo Card 1 -->
+            <div class="bg-white p-3 rounded-2xl shadow-xl transform rotate-[-2deg] hover:rotate-0 hover:z-20 transition-all duration-300">
+                <div class="overflow-hidden rounded-xl aspect-square">
+                    <img src="sayangku.jpeg" alt="Cute Love" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-center mt-3 font-pacifico text-pink-500 text-xl">Love You</p>
+            </div>
+
+            <!-- Photo Card 2 (New) -->
+            <div class="bg-white p-3 rounded-2xl shadow-xl transform rotate-[1deg] hover:rotate-0 hover:z-20 transition-all duration-300 md:mt-8">
+                <div class="overflow-hidden rounded-xl aspect-square">
+                    <img src="sayangku2.jpeg" alt="Us" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-center mt-3 font-pacifico text-pink-500 text-xl">My Everything</p>
+            </div>
+
+            <!-- Photo Card 3 -->
+            <div class="bg-white p-3 rounded-2xl shadow-xl transform rotate-[3deg] hover:rotate-0 hover:z-20 transition-all duration-300">
+                <div class="overflow-hidden rounded-xl aspect-square">
+                    <img src="sayangku3.jpeg" alt="Cute Love 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-center mt-3 font-pacifico text-pink-500 text-xl">Forever 💖</p>
+            </div>
+
+        </div>
+
+        <!-- Video Section -->
+        <div class="w-full bg-white p-4 rounded-3xl shadow-2xl border-4 border-pink-200 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300"></div>
+            <h2 class="text-2xl font-bold text-center text-pink-600 mb-4 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-film"></i> Video Spesial Kita,gapunya vidio special kita
+            </h2>
+            <div class="rounded-2xl overflow-hidden bg-black aspect-video relative">
+                <!-- Ganti source dengan video kamu nantinya -->
+                <video controls autoplay loop muted class="w-full h-full object-cover">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Browser kamu ga support video HTML5 :(
+                </video>
+            </div>
+            <p class="text-center text-gray-600 mt-4 font-medium italic text-sm">
+                *(kita tidak ada vidio sayangg,sama sayang vidio waktu kita dijalan)*
+            </p>
+        </div>
+
+        <!-- Restart Button -->
+        <div class="mt-12">
+            <button onclick="playMusicAndRestart()" class="bg-white/80 backdrop-blur-sm border border-pink-300 text-pink-600 font-bold py-3 px-8 rounded-full shadow-md hover:bg-pink-50 transition-colors flex items-center gap-2 mx-auto">
+                <i class="fa-solid fa-rotate-left"></i> Main Sekali Lagi
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- 1. Background Hearts Generator ---
+        const heartContainer = document.getElementById('heart-container');
+        
+        function createHeart() {
+            const heart = document.createElement('i');
+            heart.classList.add('fa-solid', 'fa-heart', 'heart-bg');
+            
+            // Randomize position, size, and animation duration
+            const leftPos = Math.random() * 100;
+            const size = Math.random() * 20 + 10; // 10px to 30px
+            const duration = Math.random() * 3 + 4; // 4s to 7s
+            
+            heart.style.left = `${leftPos}vw`;
+            heart.style.fontSize = `${size}px`;
+            heart.style.animationDuration = `${duration}s`;
+            
+            heartContainer.appendChild(heart);
+            
+            // Remove heart after animation completes to avoid memory leak
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Generate a new heart every 300ms
+        setInterval(createHeart, 300);
+
+        // --- 2. Infinite Dodging Logic for "Nggak" Button ---
+        const btnNo = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
+
+        function moveButtonRandomly() {
+            // Get safe boundaries based on viewport width
+            const maxRadiusX = Math.min(window.innerWidth / 3, 150); 
+            const maxRadiusY = Math.min(window.innerHeight / 3, 150);
+            
+            // Generate random move distance, ensuring it moves significantly away
+            const moveX = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * maxRadiusX + 50);
+            const moveY = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * maxRadiusY + 50);
+
+            btnNo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+
+        // Dodge on mouse over (Desktop)
+        btnNo.addEventListener('mouseover', moveButtonRandomly);
+        
+        // Dodge on touch (Mobile)
+        btnNo.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Mencegah klik
+            moveButtonRandomly();
+        });
+
+        // Just in case they somehow manage to click it (super fast users)
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButtonRandomly();
+        });
+
+        // --- 3. Reveal Main Content (When "Sayang" is clicked) ---
+        const introScreen = document.getElementById('intro-screen');
+        const mainContent = document.getElementById('main-content');
+
+        btnYes.addEventListener('click', () => {
+            // Fade out intro
+            introScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                // Reveal main content
+                mainContent.classList.remove('hidden');
+                mainContent.classList.add('fade-in');
+                window.scrollTo(0, 0); // scroll to top
+            }, 500); // match CSS animation time
+        });
+
+        // --- 4. Restart functionality ---
+        function playMusicAndRestart() {
+            // Reset states
+            btnNo.style.transform = `translate(0px, 0px)`;
+            
+            // Transitions
+            mainContent.classList.remove('fade-in');
+            mainContent.classList.add('hidden');
+            
+            introScreen.style.display = 'flex';
+            introScreen.classList.remove('fade-out');
+            introScreen.classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>
